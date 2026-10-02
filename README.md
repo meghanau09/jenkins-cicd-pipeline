@@ -64,5 +64,4 @@ docker run -d -p 3000:3000 --name sample-node-container sample-node-app
 
 http://localhost:3000
 
-```bash
-docker build -t sample-node-app .
+
