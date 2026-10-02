@@ -1,67 +1,68 @@
-# Node.js Application CI/CD Pipeline Using GitHub Actions and Docker
+# Jenkins CI/CD Pipeline with Docker
 
-## Project Overview
+## Objective
 
-This project demonstrates an automated CI/CD pipeline for a Node.js application using GitHub Actions and Docker.
+The objective of this project is to automate the build and deployment process of a Node.js application using Jenkins and Docker.
 
-Whenever code is pushed to the main branch:
-- GitHub Actions automatically triggers the workflow
-- Dependencies are installed
-- Application is tested
-- Docker image is built
-- Docker image is pushed to Docker Hub
+## Tools Used
 
-This helps automate the software delivery process and ensures consistent deployments.
+- Jenkins
+- Docker
+- GitHub
+- Node.js
+- Git
 
----
+## CI/CD Pipeline Flow
 
-# Architecture / Workflow
+Developer pushes code to GitHub
 
-Developer
-   |
-   |
-GitHub Repository
-   |
-   |
-GitHub Actions Workflow
-   |
-   |
-Build Node.js Application
-   |
-   |
-Create Docker Image
-   |
-   |
-Push Image to Docker Hub
+↓
 
+Jenkins Pipeline Trigger
 
----
+↓
 
-# Technologies Used
+Checkout Source Code
 
-| Tool | Purpose |
-|------|---------|
-| Node.js | Application runtime |
-| Docker | Containerization |
-| GitHub | Source code repository |
-| GitHub Actions | CI/CD automation |
-| Docker Hub | Docker image registry |
+↓
+
+Build Docker Image
+
+↓
+
+Deploy Docker Container
+
+↓
+
+Application Running on Port 3000
 
 
----
+## Jenkins Pipeline Stages
 
-# Project Structure
-sample-node-app/
-│
-├── .github/
-│ └── workflows/
-│ └── node-ci-cd.yml
-│
-├── node_modules/
-│
-├── package.json
-├── package-lock.json
-├── Dockerfile
-├── .dockerignore
-├── .gitignore
-└── README.md
+1. Checkout Code
+   - Jenkins fetches source code from GitHub repository.
+
+2. Build Docker Image
+   - Jenkins creates a Docker image using Dockerfile.
+
+3. Deploy Container
+   - Jenkins runs the Docker container and exposes the application on port 3000.
+
+
+## Docker Commands Used
+
+Build Image:
+
+```bash
+docker build -t sample-node-app .
+
+## Run Container:
+
+docker run -d -p 3000:3000 --name sample-node-container sample-node-app
+
+## Application Access
+
+http://localhost:3000
+
+```bash
+docker build -t sample-node-app .
