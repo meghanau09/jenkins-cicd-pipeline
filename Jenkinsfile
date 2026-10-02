@@ -19,14 +19,17 @@ pipeline {
 
         stage('Deploy Container') {
             steps {
-                bat '''
-                docker ps
-                docker images
-                docker stop sample-node-container || exit 0
-                docker rm sample-node-container || exit 0
-                docker run -d -p 3000:3000 --name sample-node-container sample-node-app
-                docker ps
-                '''
+        bat '''
+        docker stop sample-node-container
+        IF %ERRORLEVEL% NEQ 0 echo Container not running
+
+        docker rm sample-node-container
+        IF %ERRORLEVEL% NEQ 0 echo Container does not exist
+
+        docker run -d -p 3000:3000 --name sample-node-container sample-node-app
+
+        docker ps
+        '''
             }
         }
     }
